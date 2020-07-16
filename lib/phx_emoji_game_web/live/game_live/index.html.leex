@@ -1,0 +1,22 @@
+<h1>Listing Games</h1>
+
+<%= if @done do %>
+<marquee style="color: green">100% Completion. You're too good</marquee>
+<% else %>
+
+<span style="color: maroon"><%= result_text(@correct) %></span>
+<br />
+Current Challenge
+<br />
+
+<%= @challenge["prompt"] %>
+<br />
+
+<%= f = form_for @changeset, "#",id: "game-form", phx_submit: "save" %>
+  <%= text_input f, :guess, placeholder: "Place your guess" %>
+  <%= submit "Guess", phx_disable_with: "Guessing..." %>
+</form>
+
+<button phx-click="random">Random</button>
+
+<% end %>
